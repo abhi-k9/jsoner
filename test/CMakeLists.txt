@@ -18,7 +18,9 @@ set_target_properties(${This} PROPERTIES
     FOLDER Tests
 )
 
-target_include_directories(${This} PRIVATE ..)
+target_include_directories(${This} PRIVATE 
+    ${Json_SOURCE_DIR}/include
+)
 
 target_link_libraries(${This} PUBLIC
     Json
