@@ -6,7 +6,8 @@
         {
             "label": "Build",
             "type": "shell",
-            "command": "cd /home/wis31/git_k09/jsoner/",
+            "command": "",
+            "args": [],
             "problemMatcher": [],
             "group": {
                 "kind": "build",

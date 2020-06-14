@@ -4,7 +4,7 @@
  * This module contains the unit tests of the
  * Json::Json class
  * 
- * © 2019 by Abhijit Kale (inspired by version from Richard Walters)
+ * © 2020 by Abhijit Kale (inspired by version from Richard Walters)
  */
 
 #include <gtest/gtest.h>
@@ -33,10 +33,10 @@
 
 TEST(JsonTests, FromNull){
     Json::Json json(nullptr);
-    ASSER_EQ("null", json.ToString());
+    ASSERT_EQ("null", json.ToString());
 }
 
 TEST(JsonTests, ToNull){
     const auto json = Json::Json::FromString("null"); 
-    ASSER_EQ(nullptr, json);
+    ASSERT_EQ(nullptr, json);
 }

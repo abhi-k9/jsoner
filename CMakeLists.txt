@@ -15,7 +15,9 @@ set(Sources
     src/Json.cpp
 )
 
-add_library(${This} STATIC ${Sources} ${Headers})
+option(BUILD_SHARED_LIBS "Build as shared library" OFF)
+
+add_library(${This} ${Sources} ${Headers})
 set_target_properties(${This} PROPERTIES
     FOLDER Libraries
 )
