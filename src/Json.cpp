@@ -4,7 +4,7 @@
  * This module contains the definition of the
  * Json::Json class
  * 
- * © 2019 by Abhijit Kale (inspired by version from Richard Walters)
+ * © 2020 by Abhijit Kale (inspired by version from Richard Walters)
  */
 #include <Json/Json.hpp>
 
@@ -17,6 +17,8 @@ namespace Json{
     };
 
     Json::~Json() = default;
+    Json& Json::operator=(Json&&) = default;
+    Json::Json(Json&&) = default;    
 
     Json::Json()
         : impl_(new Impl)
@@ -24,6 +26,24 @@ namespace Json{
         
                 
 
+    }
+
+    Json::Json(nullptr_t) 
+        : impl_(new Impl)
+    {
+        
+    }
+
+    bool Json::operator==(const Json& other) const {
+        return false;
+    }
+
+    std::string Json::ToString() const{
+        return "";
+    }
+
+    Json Json::FromString(const std::string& format){
+        return Json();
     }
 
 }

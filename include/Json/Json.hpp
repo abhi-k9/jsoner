@@ -6,7 +6,7 @@
  * 
  * This module declares the Json:Json class.
  * 
- * © 2019 by Abhijit Kale (inspired by version from Richard Walters)
+ * © 2020 by Abhijit Kale (inspired by version from Richard Walters)
  */
 
 #include <memory>
@@ -26,9 +26,9 @@ namespace Json{
         // Life cycle management
         ~Json();
         Json(const Json&) = delete;
-        Json(Json&&) = delete;
+        Json(Json&&);
         Json& operator=(const Json&) = delete;
-        Json& operator=(Json&&) = delete;
+        Json& operator=(Json&&);
 
         // Public methods
         public:
@@ -36,6 +36,45 @@ namespace Json{
          * This is the default constructor.
          */
         Json();
+
+        /**
+         * This constructs a JSON object consisting of the "null" literal.
+         * 
+         * @param[in] null
+         *  This is the object to wrap in JSON.
+         * 
+         */
+        Json(std::nullptr_t);
+
+        /**
+         * This is the equality comparison operator.
+         * 
+         * @param[in] null
+         *  This is the other JSON object to which to compare this one
+         * 
+         * @return
+         *  Indicates whether or not the two JSON objects are equal
+         * 
+         */
+        bool operator==(const Json& other) const;
+        
+
+        /**
+         * This encodes the JSON object into its string format.
+         * 
+         * @return
+         *  The string format of the JSON object is returned.
+         */
+        std::string ToString() const;
+
+        /**
+         * This method returns a new JSON Object constructed by parsing
+         * the given string.
+         *
+         * @return
+         *  This is the string format of the JSON object to construct.
+         */
+        static Json FromString(const std::string& format);
 
         // Private properties
         private:
