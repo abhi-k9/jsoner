@@ -17,7 +17,7 @@ set(Sources
 
 option(BUILD_SHARED_LIBS "Build as shared library" OFF)
 
-add_library(${This} ${Sources} ${Headers})
+add_library(${This} STATIC ${Sources} ${Headers})
 set_target_properties(${This} PROPERTIES
     FOLDER Libraries
 )
@@ -26,8 +26,10 @@ target_include_directories(${This} PUBLIC
     include
 )
 
-target_link_libraries(${This} PUBLIC
-    lib
-)
+# target_link_libraries(${This} PUBLIC
+#     lib
+# )
+
+enable_testing()
 
 add_subdirectory(test)
