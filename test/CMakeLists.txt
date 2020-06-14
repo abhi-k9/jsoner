@@ -22,15 +22,19 @@ target_include_directories(${This} PRIVATE
     ${Json_SOURCE_DIR}/include
 )
 
-find_library(GTEST_LIB gtest_main HINTS ${Json_SOURCE_DIR}/lib)
+find_library(GTEST_MAIN_LIB gtest_main HINTS ${Json_SOURCE_DIR}/lib)
+find_library(GTEST_LIB libgtest.a HINTS ${Json_SOURCE_DIR}/lib)
 find_library(JSON_LIB Json HINTS ${Json_SOURCE_DIR}/build)
-message(STATUS "gtest_main library found at ${GTEST_LIB}")
+message(STATUS "gtest_main library found at ${GTEST_MAIN_LIB}")
+message(STATUS "gtest library found at ${GTEST_LIB}")
 message(STATUS "Json library found at ${JSON_LIB}")
 
 target_link_libraries(${This} PUBLIC
     Json
-    ${JSON_LIB}
     ${GTEST_LIB}
+    ${GTEST_MAIN_LIB}
+    pthread
+    
 )
 
 add_test(
