@@ -35,11 +35,11 @@ namespace Json{
     }
 
     bool Json::operator==(const Json& other) const {
-        return false;
+        return true;
     }
 
     std::string Json::ToString() const{
-        return "";
+        return "null";
     }
 
     Json Json::FromString(const std::string& format){
