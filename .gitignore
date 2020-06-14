@@ -31,6 +31,9 @@ build/
 *.la
 *.a
 *.lib
+# Don't exclude external libraries in lib/
+!lib/*
+
 
 # Executables
 *.exe
