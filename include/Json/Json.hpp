@@ -55,6 +55,16 @@ namespace Json{
          */
         Json(bool value);
 
+        
+        /**
+         * This constructs a JSON object consisting of a string value.
+         * 
+         * @param[in] value
+         *  This is the object to wrap in JSON.
+         * 
+         */
+        Json(const std::string& value);
+        
         /**
          * This is the equality comparison operator.
          * 

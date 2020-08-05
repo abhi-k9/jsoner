@@ -21,6 +21,7 @@ namespace Json{
             Invalid,
             Null,
             Boolean,
+            String,
         };
 
         /**
@@ -35,7 +36,33 @@ namespace Json{
          */
         union {
             bool booleanValue;
+            std::string* stringValue;
         };
+
+        // Life cycle management
+        ~Impl(){
+            switch (type) {
+                case Impl::Type::String: {
+                    delete stringValue;
+                } break;
+
+                default: break;
+            }
+            
+        };
+
+        Impl(const Impl&) = delete;
+        Impl(Impl&&) = delete;
+        Impl& operator=(const Impl&) = delete;
+        Impl& operator=(Impl&&) = delete;
+
+        // Methods
+
+        /**
+         * This is the default constructor
+         */
+        Impl() = default;
+
     };
 
     Json::~Json() = default;
@@ -50,7 +77,7 @@ namespace Json{
 
     }
 
-    Json::Json(nullptr_t) 
+    Json::Json(std::nullptr_t) 
         : impl_(new Impl)
     {
         impl_->type = Impl::Type::Null;
@@ -61,6 +88,13 @@ namespace Json{
     {
         impl_->type = Impl::Type::Boolean;
         impl_->booleanValue = value;
+    }
+
+    Json::Json(const std::string& value)
+        : impl_(new Impl)
+    {
+        impl_->type = Impl::Type::String;
+        impl_->stringValue = new std::string(value);
     }
 
 
