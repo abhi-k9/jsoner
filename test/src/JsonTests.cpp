@@ -9,6 +9,7 @@
 
 #include <gtest/gtest.h>
 #include <Json/Json.hpp>
+#include <windows.h>
 
 // /**
 //  * This is the test fixture for these tests, providing common
